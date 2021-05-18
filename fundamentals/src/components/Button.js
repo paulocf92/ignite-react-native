@@ -1,15 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function Button() {
+export default function Button({ onPress }) {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      // onPress={handleAddNewSkill}
-    >
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Text style={styles.buttonText}>Add</Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -23,6 +20,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 17,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
-})
+});

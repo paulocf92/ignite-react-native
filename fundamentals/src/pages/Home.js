@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Text, 
-  StyleSheet, 
-  SafeAreaView, 
-  TextInput, 
+import {
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TextInput,
   Platform,
 } from 'react-native';
 
@@ -24,21 +24,18 @@ export default function Home() {
         <Text style={styles.title}>Welcome, Paulo Filho</Text>
         <TextInput
           style={styles.input}
-          placeholder="New skill"
-          placeholderTextColor="#999"
+          placeholder='New skill'
+          placeholderTextColor='#999'
           onChangeText={setNewSkill}
         />
 
-        <Button />
+        <Button onPress={handleAddNewSkill} />
 
-        <Text style={[styles.title, { marginVertical: 50 }]}>
-          My Skills
-        </Text>
+        <Text style={[styles.title, { marginVertical: 50 }]}>My Skills</Text>
 
         {mySkills.map(skill => (
-          <SkillCard key={skill} />
+          <SkillCard key={skill} skill={skill} />
         ))}
-
       </SafeAreaView>
     </>
   );
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#fff',
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   input: {
     backgroundColor: '#1f1325',
@@ -64,5 +61,4 @@ const styles = StyleSheet.create({
     marginTop: 30,
     borderRadius: 7,
   },
-  
-})
+});

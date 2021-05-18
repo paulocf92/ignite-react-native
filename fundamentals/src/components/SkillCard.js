@@ -1,14 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function SkillCard() {
+export default function SkillCard({ skill }) {
   return (
-    <TouchableOpacity style={styles.container} key="1">
-      <Text style={styles.text}>
-        skill
-      </Text>
+    <TouchableOpacity style={styles.container}>
+      <Text style={styles.text}>{skill}</Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -20,8 +18,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   text: {
-    color: '#fff',  
+    color: '#fff',
     fontSize: 22,
-    fontWeight: 'bold'
-  }
-})
+    fontWeight: 'bold',
+  },
+});
