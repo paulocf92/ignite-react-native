@@ -37,6 +37,15 @@ Vamos aprender o ecossistema do desenvolvimento mobile com React Native, criar e
 - Debug no React Native
 - Conclusão
 
+## Chapter #2: [App Modernas em React Native com Expo, Styled Components, Navigation, Etc](modern-rn)
+
+Neste capítulo criaremos uma aplicação completa utilizando React Native, TypeScript e Styled Components (CSS-in-JS) para ir mais a fundo em estilização e criação de interfaces no React Native baseando-se em um layout do Figma. Você também irá aprender a utilizar API Nativas, Armazenamento Local com Async Storage, Navegação, Formulários e Login Social. E para dar um Booster na produtividade vamos utilizar o Expo Bare Workflow.
+
+### Expo e Styled Components
+
+- Ambiente Expo
+- Styled Components
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
