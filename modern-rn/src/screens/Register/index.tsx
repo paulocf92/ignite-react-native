@@ -63,8 +63,19 @@ export function Register() {
 
       <Form>
         <Fields>
-          <InputForm name='name' control={control} placeholder='Nome' />
-          <InputForm name='amount' control={control} placeholder='Preço' />
+          <InputForm
+            name='name'
+            control={control}
+            placeholder='Nome'
+            autoCapitalize='sentences'
+            autoCorrect={false}
+          />
+          <InputForm
+            name='amount'
+            control={control}
+            placeholder='Preço'
+            keyboardType='numeric'
+          />
 
           <TransactionTypes>
             <TransactionTypeButton
