@@ -46,6 +46,11 @@ Neste capítulo criaremos uma aplicação completa utilizando React Native, Type
 - Ambiente Expo
 - Styled Components
 
+### Formulários e Navegação
+
+- Formulários
+- Navegação
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
