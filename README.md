@@ -51,6 +51,8 @@ Neste capítulo criaremos uma aplicação completa utilizando React Native, Type
 - Formulários
 - Navegação
 
+### Async Storage
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
