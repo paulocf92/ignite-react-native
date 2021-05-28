@@ -21,6 +21,8 @@ interface CategoryData {
   name: string;
   total: string;
   color: string;
+  percentage: number;
+  percentageFormatted: string;
 }
 
 export function Resume() {
@@ -36,6 +38,11 @@ export function Resume() {
 
     const expenses: TransactionData[] = parsedResponse.filter(
       (transaction: TransactionData) => transaction.type === 'negative'
+    );
+
+    const expensesTotal = expenses.reduce(
+      (acc: number, item: TransactionData) => acc + Number(item.amount),
+      0
     );
 
     const totalByCategory: CategoryData[] = [];
@@ -57,11 +64,16 @@ export function Resume() {
           })
           .replace(/\$(\d)/, '$ $1');
 
+        const percentage = (categorySum / expensesTotal) * 100;
+        const percentageFormatted = `${percentage.toFixed(0)}%`;
+
         totalByCategory.push({
           key: category.key,
           name: category.name,
           color: category.color,
           total,
+          percentage,
+          percentageFormatted,
         });
       }
     });
