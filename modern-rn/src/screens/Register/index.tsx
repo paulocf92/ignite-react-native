@@ -7,6 +7,7 @@ import uuid from 'react-native-uuid';
 
 import { useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../../hooks/auth';
 
 import { InputForm } from '../../components/Form/InputForm';
 import { Button } from '../../components/Form/Button';
@@ -51,6 +52,7 @@ export function Register() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  const { user } = useAuth();
   const navigation = useNavigation();
 
   function handleTransactionTypeSelect(type: 'positive' | 'negative') {
@@ -81,7 +83,7 @@ export function Register() {
     };
 
     try {
-      const dataKey = '@gofinances:transactions';
+      const dataKey = `@gofinances:transactions_user:${user.id}`;
 
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];

@@ -9,6 +9,7 @@ import { ptBR } from 'date-fns/locale';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useFocusEffect } from '@react-navigation/core';
 import { useTheme } from 'styled-components';
+import { useAuth } from '../../hooks/auth';
 
 import { HistoryCard } from '../../components/HistoryCard';
 
@@ -50,6 +51,7 @@ export function Resume() {
     []
   );
 
+  const { user } = useAuth();
   const theme = useTheme();
   const bottomTabBarHeight = useBottomTabBarHeight();
 
@@ -64,7 +66,7 @@ export function Resume() {
   }
 
   async function loadData() {
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
 
     const response = await AsyncStorage.getItem(dataKey);
     const parsedResponse = response ? JSON.parse(response) : [];
