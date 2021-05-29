@@ -53,6 +53,11 @@ Neste capítulo criaremos uma aplicação completa utilizando React Native, Type
 
 ### Async Storage
 
+### Contextos e Autenticação
+
+- Contextos
+- Login Social
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
