@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useFocusEffect } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
+import { useAuth } from '../../hooks/auth';
 
 import { HighlightCard } from '../../components/HighlightCard';
 import {
@@ -48,12 +49,20 @@ function getLastTransactionDate(
   collection: DataListProps[],
   type: 'positive' | 'negative'
 ) {
+  const collectionFiltered = collection.filter(
+    transaction => transaction.type === type
+  );
+
+  if (collectionFiltered.length === 0) {
+    return 0;
+  }
+
   const lastTransaction = new Date(
     Math.max.apply(
       Math,
-      collection
-        .filter(transaction => transaction.type === type)
-        .map(transaction => new Date(transaction.date).getTime())
+      collectionFiltered.map(transaction =>
+        new Date(transaction.date).getTime()
+      )
     )
   );
 
@@ -70,10 +79,11 @@ export function Dashboard() {
     {} as HighlightData
   );
 
+  const { user, signOut } = useAuth();
   const theme = useTheme();
 
   async function loadTransactions() {
-    const dataKey = '@gofinances:transactions';
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
 
     const response = await AsyncStorage.getItem(dataKey);
     const parsedTransactions = response ? JSON.parse(response) : [];
@@ -122,7 +132,10 @@ export function Dashboard() {
       'negative'
     );
 
-    const totalInterval = `01 à ${lastExpenseTransaction}`;
+    const totalInterval =
+      lastExpenseTransaction === 0
+        ? 'Não há transações'
+        : `01 à ${lastExpenseTransaction}`;
 
     setHighlightData({
       income: {
@@ -132,7 +145,10 @@ export function Dashboard() {
             currency: 'BRL',
           })
           .replace(/\$(\d)/, '$ $1'),
-        lastTransaction: `Última entrada ${lastIncomeTransaction}`,
+        lastTransaction:
+          lastIncomeTransaction === 0
+            ? 'Não há transações'
+            : `Última entrada ${lastIncomeTransaction}`,
       },
       expenses: {
         amount: expenseTotal
@@ -141,7 +157,10 @@ export function Dashboard() {
             currency: 'BRL',
           })
           .replace(/\$(\d)/, '$ $1'),
-        lastTransaction: `Última saída ${lastExpenseTransaction}`,
+        lastTransaction:
+          lastExpenseTransaction === 0
+            ? 'Não há transações'
+            : `Última saída ${lastExpenseTransaction}`,
       },
       total: {
         amount: (incomeTotal - expenseTotal)
@@ -176,16 +195,16 @@ export function Dashboard() {
               <UserInfo>
                 <Photo
                   source={{
-                    uri: 'https://avatars.githubusercontent.com/u/6351070?v=4',
+                    uri: user.photo,
                   }}
                 />
                 <User>
                   <UserGreetings>Hi,</UserGreetings>
-                  <UserName>Paulo</UserName>
+                  <UserName>{user.name}</UserName>
                 </User>
               </UserInfo>
 
-              <LogoutButton onPress={() => {}}>
+              <LogoutButton onPress={signOut}>
                 <Icon name='power' />
               </LogoutButton>
             </UserWrapper>
