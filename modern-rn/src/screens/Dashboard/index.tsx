@@ -49,12 +49,20 @@ function getLastTransactionDate(
   collection: DataListProps[],
   type: 'positive' | 'negative'
 ) {
+  const collectionFiltered = collection.filter(
+    transaction => transaction.type === type
+  );
+
+  if (collectionFiltered.length === 0) {
+    return 0;
+  }
+
   const lastTransaction = new Date(
     Math.max.apply(
       Math,
-      collection
-        .filter(transaction => transaction.type === type)
-        .map(transaction => new Date(transaction.date).getTime())
+      collectionFiltered.map(transaction =>
+        new Date(transaction.date).getTime()
+      )
     )
   );
 
@@ -124,7 +132,10 @@ export function Dashboard() {
       'negative'
     );
 
-    const totalInterval = `01 à ${lastExpenseTransaction}`;
+    const totalInterval =
+      lastExpenseTransaction === 0
+        ? 'Não há transações'
+        : `01 à ${lastExpenseTransaction}`;
 
     setHighlightData({
       income: {
@@ -134,7 +145,10 @@ export function Dashboard() {
             currency: 'BRL',
           })
           .replace(/\$(\d)/, '$ $1'),
-        lastTransaction: `Última entrada ${lastIncomeTransaction}`,
+        lastTransaction:
+          lastIncomeTransaction === 0
+            ? 'Não há transações'
+            : `Última entrada ${lastIncomeTransaction}`,
       },
       expenses: {
         amount: expenseTotal
@@ -143,7 +157,10 @@ export function Dashboard() {
             currency: 'BRL',
           })
           .replace(/\$(\d)/, '$ $1'),
-        lastTransaction: `Última saída ${lastExpenseTransaction}`,
+        lastTransaction:
+          lastExpenseTransaction === 0
+            ? 'Não há transações'
+            : `Última saída ${lastExpenseTransaction}`,
       },
       total: {
         amount: (incomeTotal - expenseTotal)
