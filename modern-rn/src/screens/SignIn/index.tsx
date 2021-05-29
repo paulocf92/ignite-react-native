@@ -7,7 +7,7 @@ import LogoSvg from '../../assets/logo.svg';
 
 import { SignInSocialButton } from '../../components/SignInSocialButton';
 
-import { AuthContext } from '../../AuthContext';
+import { useAuth } from '../../hooks/auth';
 
 import {
   Container,
@@ -20,7 +20,7 @@ import {
 } from './styles';
 
 export function SignIn() {
-  const data = useContext(AuthContext);
+  const data = useAuth();
 
   return (
     <Container>
