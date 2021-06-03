@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
@@ -17,6 +17,8 @@ import forceSvg from '../../assets/force.svg';
 import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
+
+import { CarDTO } from '../../dtos/CarDTO';
 
 import {
   Container,
@@ -44,12 +46,27 @@ import {
   RentalPriceTotal,
 } from './styles';
 
+interface Params {
+  car: CarDTO;
+  dates: string[];
+}
+
 export function SchedulingDetails() {
   const theme = useTheme();
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const { car, dates } = route.params as Params;
 
   function handleConfirmRental() {
-    navigation.navigate('SchedulingComplete');
+    navigation.navigate('SchedulingComplete', {
+      car,
+      dates,
+    });
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
   }
 
   return (
@@ -61,7 +78,7 @@ export function SchedulingDetails() {
       />
 
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={handleGoBack} />
       </Header>
 
       <CarImages>
