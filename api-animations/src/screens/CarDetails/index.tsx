@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
@@ -31,6 +32,12 @@ import {
 } from './styles';
 
 export function CarDetails() {
+  const navigation = useNavigation();
+
+  function handleSelectRentalPeriod() {
+    navigation.navigate('Scheduling');
+  }
+
   return (
     <Container>
       <StatusBar
@@ -80,7 +87,10 @@ export function CarDetails() {
         </About>
       </Content>
       <Footer>
-        <Button title='Confirmar' />
+        <Button
+          title='Escolher período do aluguel'
+          onPress={handleSelectRentalPeriod}
+        />
       </Footer>
     </Container>
   );
