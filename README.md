@@ -58,6 +58,17 @@ Neste capítulo criaremos uma aplicação completa utilizando React Native, Type
 - Contextos
 - Login Social
 
+## Chapter #3: [Consumindo API e Animações](api-animations)
+
+Neste módulo você irá aprender a integrar sua aplicação React Native com uma API. Você irá compreender os métodos do protocolo HTTP, lidar com requisições e respostas realizadas a uma API. Para integrar e consumir API utilizaremos o Axios. Também aprenderemos como aplicar na prática ferramentas e técnicas que estarão presentes nas suas aplicações no futuro, com boas práticas de UX e Animações.
+
+### Consumindo API
+
+- Criação das Interfaces
+- Consumindo API
+
+### Animações
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
