@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
@@ -7,7 +7,12 @@ import ArrowSvg from '../../assets/arrow.svg';
 
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
-import { Calendar } from '../../components/Calendar';
+import {
+  Calendar,
+  DayProps,
+  MarkedDateProps,
+  generateInterval,
+} from '../../components/Calendar';
 
 import {
   Container,
@@ -22,11 +27,37 @@ import {
 } from './styles';
 
 export function Scheduling() {
+  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
+    {} as DayProps
+  );
+  const [markedDates, setMarkedDates] = useState<MarkedDateProps>(
+    {} as MarkedDateProps
+  );
+
   const theme = useTheme();
   const navigation = useNavigation();
 
   function handleConfirmRentalDetails() {
     navigation.navigate('SchedulingDetails');
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
+  function handleChangeDate(date: DayProps) {
+    let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
+    let end = date;
+
+    if (start.timestamp > end.timestamp) {
+      start = end;
+      end = start;
+    }
+
+    setLastSelectedDate(end);
+    const interval = generateInterval(start, end);
+
+    setMarkedDates(interval);
   }
 
   return (
@@ -38,7 +69,7 @@ export function Scheduling() {
       />
 
       <Header>
-        <BackButton onPress={() => {}} color={theme.colors.shape} />
+        <BackButton onPress={handleGoBack} color={theme.colors.shape} />
 
         <Title>
           Escolha uma{'\n'}data de início e{'\n'}fim do aluguel
@@ -60,7 +91,7 @@ export function Scheduling() {
       </Header>
 
       <Content>
-        <Calendar />
+        <Calendar markedDate={markedDates} onDayPress={handleChangeDate} />
       </Content>
 
       <Footer>
