@@ -285,19 +285,19 @@
     },
     {
       "id": "ffb71f55-818a-48b1-b7d2-2efc406ede25",
-      "unavailable_dates": [
-        "2021-06-15",
-        "2021-06-16",
-        "2021-06-17",
-        "2021-06-01",
-        "2021-06-02",
-        "2021-06-03",
-        "2021-06-04",
-        "2021-05-29",
-        "2021-05-30",
-        "2021-05-29",
-        "2021-05-30"
-      ]
+      "unavailable_dates": {
+        "0": "2021-06-24",
+        "1": "2021-06-25",
+        "2": "2021-06-17",
+        "3": "2021-06-01",
+        "4": "2021-06-02",
+        "5": "2021-06-03",
+        "6": "2021-06-04",
+        "7": "2021-05-29",
+        "8": "2021-05-30",
+        "9": "2021-05-29",
+        "10": "2021-05-30"
+      }
     },
     {
       "id": "52930821-cbea-4b05-9f45-7c02b1bb0d8c",
@@ -319,7 +319,7 @@
     {
       "id": "49983f6c-a46a-4dfd-a86e-425b8c72e086",
       "unavailable_dates": {
-        "0": "2021-06-15",
+        "0": "2021-06-17",
         "1": "2021-06-16",
         "2": "2021-06-17",
         "3": "2021-06-18",
@@ -499,6 +499,103 @@
       "startDate": "29/06/2021",
       "endDate": "30/06/2021",
       "id": 3
+    },
+    {
+      "user_id": 1,
+      "car": {
+        "id": "49983f6c-a46a-4dfd-a86e-425b8c72e086",
+        "brand": "Lamborghini",
+        "name": "Huracan",
+        "about": "Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.",
+        "rent": {
+          "period": "Ao dia",
+          "price": 120
+        },
+        "fuel_type": "electric_motor",
+        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/4.png",
+        "accessories": [
+          {
+            "type": "speed",
+            "name": "380km/h"
+          },
+          {
+            "type": "acceleration",
+            "name": "3.2s"
+          },
+          {
+            "type": "turning_diameter",
+            "name": "800 HP"
+          },
+          {
+            "type": "electric_motor",
+            "name": "Elétrico"
+          },
+          {
+            "type": "exchange",
+            "name": "Auto"
+          },
+          {
+            "type": "seats",
+            "name": "2 pessoas"
+          }
+        ],
+        "photos": [
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/9.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/10.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/11.png"
+        ]
+      },
+      "startDate": "17/06/2021",
+      "endDate": "17/06/2021",
+      "id": 4
+    },
+    {
+      "user_id": 1,
+      "car": {
+        "id": "ffb71f55-818a-48b1-b7d2-2efc406ede25",
+        "brand": "Porsche",
+        "name": "Panamera",
+        "about": "O Panamera é um automóvel de luxo coupé com porte grande. Tem motorização dianteira V6 e V8. A tração é integral com uma caixa PDK de sete mudanças e dupla embreagem.",
+        "rent": {
+          "period": "Ao dia",
+          "price": 340
+        },
+        "fuel_type": "gasoline_motor",
+        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/2.png",
+        "accessories": [
+          {
+            "type": "speed",
+            "name": "315km/h"
+          },
+          {
+            "type": "acceleration",
+            "name": "2.9s"
+          },
+          {
+            "type": "turning_diameter",
+            "name": "700 HP"
+          },
+          {
+            "type": "gasoline_motor",
+            "name": "Gasoline"
+          },
+          {
+            "type": "exchange",
+            "name": "Auto"
+          },
+          {
+            "type": "seats",
+            "name": "4 pessoas"
+          }
+        ],
+        "photos": [
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/4.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/5.png"
+        ]
+      },
+      "startDate": "24/06/2021",
+      "endDate": "25/06/2021",
+      "id": 5
     }
   ]
 }
