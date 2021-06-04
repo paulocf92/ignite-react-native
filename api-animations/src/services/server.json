@@ -261,27 +261,27 @@
   "schedules_bycars": [
     {
       "id": "535e8de8-721b-4bac-8b72-7d29be7da467",
-      "unavailable_dates": [
-        "2021-06-01",
-        "2021-06-02",
-        "2021-06-09",
-        "2021-05-25",
-        "2021-07-16",
-        "2021-07-17",
-        "2021-07-18",
-        "2021-05-28",
-        "2021-05-29",
-        "2021-05-30",
-        "2021-05-28",
-        "2021-05-29",
-        "2021-05-30",
-        "2021-05-28",
-        "2021-05-29",
-        "2021-05-30",
-        "2021-06-16",
-        "2021-06-17",
-        "2021-06-18"
-      ]
+      "unavailable_dates": {
+        "0": "2021-06-22",
+        "1": "2021-06-23",
+        "2": "2021-06-24",
+        "3": "2021-06-25",
+        "4": "2021-06-26",
+        "5": "2021-07-17",
+        "6": "2021-07-18",
+        "7": "2021-05-28",
+        "8": "2021-05-29",
+        "9": "2021-05-30",
+        "10": "2021-05-28",
+        "11": "2021-05-29",
+        "12": "2021-05-30",
+        "13": "2021-05-28",
+        "14": "2021-05-29",
+        "15": "2021-05-30",
+        "16": "2021-06-16",
+        "17": "2021-06-17",
+        "18": "2021-06-18"
+      }
     },
     {
       "id": "ffb71f55-818a-48b1-b7d2-2efc406ede25",
@@ -302,8 +302,8 @@
     {
       "id": "52930821-cbea-4b05-9f45-7c02b1bb0d8c",
       "unavailable_dates": {
-        "0": "2021-06-04",
-        "1": "2021-06-05",
+        "0": "2021-06-29",
+        "1": "2021-06-30",
         "2": "2021-06-06",
         "3": "2021-06-07",
         "4": "2021-06-08",
@@ -343,34 +343,86 @@
     },
     {
       "id": "59626707-88c5-4877-9350-07f372c0905a",
-      "unavailable_dates": [
-        "2021-06-28",
-        "2021-06-29"
-      ]
+      "unavailable_dates": {
+        "0": "2021-06-16",
+        "1": "2021-06-17",
+        "2": "2021-06-18",
+        "3": "2021-06-19",
+        "4": "2021-06-20"
+      }
     }
   ],
   "schedules_byuser": [
     {
       "user_id": 1,
       "car": {
-        "id": "49983f6c-a46a-4dfd-a86e-425b8c72e086",
-        "brand": "Lamborghini",
-        "name": "Huracan",
-        "about": "Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.",
+        "id": "59626707-88c5-4877-9350-07f372c0905a",
+        "brand": "mitsubishi",
+        "name": "Lancer",
+        "about": "Mitsubishi Lancer é um belo e agressivo carro. Além do mais, ele encanta pelo conforto e pela eficiência. Bastante firme e estável para dirigir com tranquilidade e segurança.",
+        "rent": {
+          "period": "Ao dia",
+          "price": 220
+        },
+        "fuel_type": "hybrid_motor",
+        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/6.png",
+        "accessories": [
+          {
+            "type": "speed",
+            "name": "180km/h"
+          },
+          {
+            "type": "acceleration",
+            "name": "2.0s"
+          },
+          {
+            "type": "turning_diameter",
+            "name": "600 HP"
+          },
+          {
+            "type": "hybrid_motor",
+            "name": "Híbrido"
+          },
+          {
+            "type": "exchange",
+            "name": "Auto"
+          },
+          {
+            "type": "seats",
+            "name": "5 pessoas"
+          }
+        ],
+        "photos": [
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/15.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/16.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/17.png"
+        ]
+      },
+      "startDate": "16/06/2021",
+      "endDate": "20/06/2021",
+      "id": 1
+    },
+    {
+      "user_id": 1,
+      "car": {
+        "id": "535e8de8-721b-4bac-8b72-7d29be7da467",
+        "brand": "Audi",
+        "name": "RS 5 Coupé",
+        "about": "O carro ainda tem sistema de tração nas quatro rodas Quattro com diferencial traseiro esportivo de série. De acordo com a Audi, ele faz o mesmo em 3,8 segundos na Sportback.",
         "rent": {
           "period": "Ao dia",
           "price": 120
         },
-        "fuel_type": "electric_motor",
-        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/4.png",
+        "fuel_type": "electric",
+        "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
         "accessories": [
           {
             "type": "speed",
-            "name": "380km/h"
+            "name": "250km/h"
           },
           {
             "type": "acceleration",
-            "name": "3.2s"
+            "name": "3.8s"
           },
           {
             "type": "turning_diameter",
@@ -386,16 +438,18 @@
           },
           {
             "type": "seats",
-            "name": "2 pessoas"
+            "name": "5 pessoas"
           }
         ],
         "photos": [
-          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/9.png",
-          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/10.png",
-          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/11.png"
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/1.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/2.png",
+          "https://storage.googleapis.com/golden-wind/ignite/react-native/images/3.png"
         ]
       },
-      "id": 1
+      "startDate": "22/06/2021",
+      "endDate": "26/06/2021",
+      "id": 2
     },
     {
       "user_id": 1,
@@ -442,7 +496,9 @@
           "https://storage.googleapis.com/golden-wind/ignite/react-native/images/8.png"
         ]
       },
-      "id": 2
+      "startDate": "29/06/2021",
+      "endDate": "30/06/2021",
+      "id": 3
     }
   ]
 }
