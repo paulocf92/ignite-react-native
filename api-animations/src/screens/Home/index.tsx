@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StatusBar, StyleSheet, BackHandler } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 import { RectButton, PanGestureHandler } from 'react-native-gesture-handler';
@@ -80,9 +80,15 @@ export function Home() {
     fetchCars();
   }, []);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => true);
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const backPressEvent = () => true;
+      BackHandler.addEventListener('hardwareBackPress', backPressEvent);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', backPressEvent);
+    }, [])
+  );
 
   return (
     <Container>
