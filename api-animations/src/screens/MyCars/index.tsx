@@ -9,7 +9,7 @@ import api from '../../services/api';
 
 import { Car } from '../../components/Car';
 import { BackButton } from '../../components/BackButton';
-import { Loading } from '../../components/Loading';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 import {
   Container,
@@ -77,7 +77,7 @@ export function MyCars() {
       </Header>
 
       {loading ? (
-        <Loading />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointments>
