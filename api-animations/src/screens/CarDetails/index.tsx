@@ -2,6 +2,14 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+import Animated, {
+  useSharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+} from 'react-native-reanimated';
+
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
@@ -15,7 +23,6 @@ import {
   Container,
   Header,
   CarImages,
-  Content,
   Details,
   Description,
   Brand,
@@ -38,6 +45,22 @@ export function CarDetails() {
 
   const { car } = route.params as Params;
 
+  const scrollY = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler(event => {
+    scrollY.value = event.contentOffset.y;
+  });
+
+  const headerStyleAnimation = useAnimatedStyle(() => {
+    return {
+      height: interpolate(
+        scrollY.value,
+        [0, 200],
+        [200, 70],
+        Extrapolate.CLAMP
+      ),
+    };
+  });
+
   function handleSelectRentalPeriod() {
     navigation.navigate('Scheduling', {
       car,
@@ -56,15 +79,24 @@ export function CarDetails() {
         translucent
       />
 
-      <Header>
-        <BackButton onPress={handleGoBack} />
-      </Header>
+      <Animated.View style={[headerStyleAnimation]}>
+        <Header>
+          <BackButton onPress={handleGoBack} />
+        </Header>
 
-      <CarImages>
-        <ImageSlider imagesUrl={car.photos} />
-      </CarImages>
+        <CarImages>
+          <ImageSlider imagesUrl={car.photos} />
+        </CarImages>
+      </Animated.View>
 
-      <Content>
+      <Animated.ScrollView
+        contentContainerStyle={{
+          padding: 24,
+          alignItems: 'center',
+        }}
+        showsVerticalScrollIndicator={false}
+        onScroll={scrollHandler}
+      >
         <Details>
           <Description>
             <Brand>{car.brand}</Brand>
@@ -87,8 +119,12 @@ export function CarDetails() {
           ))}
         </Accessories>
 
-        <About>{car.about}</About>
-      </Content>
+        <About>
+          {car.about}
+          {car.about}
+          {car.about}
+        </About>
+      </Animated.ScrollView>
       <Footer>
         <Button
           title='Escolher período do aluguel'
