@@ -75,6 +75,19 @@ Neste módulo você irá aprender a integrar sua aplicação React Native com um
 
 ### Animações
 
+## Chapter #4: [Offline First](rentx)
+
+📱 App - **RentX** (Continuação)
+
+É hora de implementar a estratégia de Offline First para que algumas funcionalidades da nossa aplicação funcione sem conexão com internet utilizando um banco de dados local mais robusto. Incluiremos essas features no app RentX que estamos desenvolvendo.
+
+### Offline First
+
+- Introdução
+- Interfaces
+- Autenticação e Navegação
+- Recursos Offline
+
 ## 📝 Licença
 
 Este projeto esta sob a licença MIT.
