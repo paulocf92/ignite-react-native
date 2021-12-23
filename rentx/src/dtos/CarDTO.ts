@@ -1,11 +1,12 @@
-interface RentData {
-  period: string;
-  price: number;
-}
-
 interface AccessoryData {
+  id: string;
   type: string;
   name: string;
+}
+
+export interface PhotoData {
+  id: string;
+  photo: string;
 }
 
 export interface CarDTO {
@@ -13,9 +14,10 @@ export interface CarDTO {
   brand: string;
   name: string;
   about: string;
-  rent: RentData;
+  period: string;
+  price: number;
   fuel_type: string;
   thumbnail: string;
   accessories: AccessoryData[];
-  photos: string[];
+  photos: PhotoData[];
 }
