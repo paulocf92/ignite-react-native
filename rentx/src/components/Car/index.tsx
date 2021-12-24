@@ -37,7 +37,7 @@ export function Car({ data, ...rest }: Props) {
           </Rent>
 
           <Type>
-            <MotorIcon />
+            <MotorIcon fill='#41414D' />
           </Type>
         </About>
       </Details>
