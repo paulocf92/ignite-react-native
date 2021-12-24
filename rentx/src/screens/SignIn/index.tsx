@@ -7,8 +7,10 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
+import { useTheme } from 'styled-components';
+
+import { useAuth } from '../../hooks/auth';
 
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -20,8 +22,10 @@ export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const theme = useTheme();
   const navigation = useNavigation();
+  const { signIn } = useAuth();
+
+  const theme = useTheme();
 
   async function handleSignIn() {
     try {
@@ -33,6 +37,8 @@ export function SignIn() {
       });
 
       await schema.validate({ email, password });
+
+      signIn({ email, password });
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         Alert.alert('Opa', err.message);
